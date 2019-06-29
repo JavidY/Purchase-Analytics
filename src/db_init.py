@@ -3,7 +3,7 @@ from mysql.connector import errorcode
 
 
 config = {
-    'user': 'root',
+    'user': 'pa_oltp',
     'password': 'mypassword',
     'host': '127.0.0.1',
     'port': '3306',
