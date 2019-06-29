@@ -43,4 +43,4 @@ jobs:
           name: initialize db 
           command: |
             . venv/bin/activate
-            src/db_init.py
+            python src/db_init.py
