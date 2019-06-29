@@ -23,8 +23,10 @@ def connect_db():
             raise err
         elif err.errno == errorcode.ER_BAD_DB_ERROR:
             print("Database does not exist")
+            raise err
         else:
             print(err)
+            raise err
 
 
 cnx = connect_db()
