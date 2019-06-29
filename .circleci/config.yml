@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7
-      - image: circleci/mysql:latest dbsrvr_pa
+      - image: circleci/mysql:latest
         environment:
             MYSQL_ROOT_PASSWORD: mypassword
             
@@ -32,6 +32,7 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
+            docker ps -a
       # Step 4: run linter and tests
       - run:
           name: run tests
