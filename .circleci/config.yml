@@ -32,10 +32,15 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt            
-      # Step 4: run linter and tests
+      # Step 4: run linter
       - run:
-          name: run tests
+          name: run linter
           command: |
             . venv/bin/activate
             flake8 --exclude=venv* --statistics
-            python src/db_init.py
+      # Step 5: initialize db   
+      - run: 
+          name: initialize db 
+          command: |
+            . venv/bin/activate
+            src/db_init.py
