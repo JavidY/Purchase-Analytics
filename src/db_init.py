@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, String, Integer
+from sqlalchemy import inspect, create_engine, Column, String, Integer
 from sqlalchemy.ext.declarative import declarative_base
 
 
@@ -14,3 +14,6 @@ class Department(Base):
 
 engine = create_engine('mysql+pymysql://pa_oltp:mypassword@127.0.0.1/pa_oltp')
 Base.metadata.create_all(engine)
+insp = inspect(engine)
+
+print(insp.get_table_names())
