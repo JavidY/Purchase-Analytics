@@ -23,4 +23,3 @@ def db_init_tables():
 
 # Create empty database tables
 create_tables()
-print(db_init_tables())
