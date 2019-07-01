@@ -3,6 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 Base = declarative_base()
+engine = create_engine('mysql+pymysql://pa_oltp:mypassword@127.0.0.1/pa_oltp')
 
 
 class Department(Base):
@@ -12,8 +13,14 @@ class Department(Base):
     department = Column(String(255), unique=True)
 
 
-engine = create_engine('mysql+pymysql://pa_oltp:mypassword@127.0.0.1/pa_oltp')
-Base.metadata.create_all(engine)
-insp = inspect(engine)
+def create_tables():
+    Base.metadata.create_all(engine)
 
-print(insp.get_table_names())
+
+def db_init_tables():
+    return inspect(engine).get_table_names()
+
+
+# Create empty database tables
+create_tables()
+print(db_init_tables())
