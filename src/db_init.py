@@ -1,25 +1,15 @@
-from sqlalchemy import inspect, create_engine, Column, String, Integer
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine, Table, MetaData, Column, String, Integer
 
 
-Base = declarative_base()
 engine = create_engine('mysql+pymysql://pa_oltp:mypassword@127.0.0.1/pa_oltp')
+metadata = MetaData()
 
 
-class Department(Base):
-    __tablename__ = 'departments'
-
-    department_id = Column(Integer, primary_key=True)
-    department = Column(String(255), unique=True)
-
-
-def create_tables():
-    Base.metadata.create_all(engine)
+# tables
+department = Table('departments', metadata,
+                   Column('department_id', Integer(), primary_key=True),
+                   Column('department', String(50)))
 
 
-def db_init_tables():
-    return inspect(engine).get_table_names()
-
-
-# Create empty database tables
-create_tables()
+# Create database tables
+metadata.create_all(engine)
