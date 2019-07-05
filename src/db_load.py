@@ -1,7 +1,7 @@
 import csv
 
 
-csv_sources = ['departments.csv']
+csv_sources = ['..\\input\\departments.csv']
 
 
 def read_csv(filename):
@@ -13,4 +13,4 @@ def read_csv(filename):
     return l
 
 if __name__ == '__main__':
-    read_csv(csv_sources[0])
+    print(read_csv(csv_sources[0]))
