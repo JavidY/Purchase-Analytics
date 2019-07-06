@@ -1,15 +1,25 @@
 import csv
+import config
 
 
-csv_sources = ['..\\input\\departments.csv']
+# get folder path to csv files
+src_path = config.get_src_path()
 
 
+# csv file names
+names = ['departments.csv', 'products.csv']
+
+
+# list of csv file name with full path
+csv_files = ['{0}/{1}'.format(src_path, f) for f in names]
+
+
+# read from csv file and return list
 def read_csv(filename):
-    l = []
     with open(filename) as csv_file:
         csv_reader = list(csv.reader(csv_file, delimiter=','))
-        return [(row[0], row[1]) for row in csv_reader[1:]]
+        return [tuple(row) for row in csv_reader[1:]]
 
 
 if __name__ == '__main__':
-    print(read_csv(csv_sources[0]))
+    print(read_csv(csv_files[0]))
