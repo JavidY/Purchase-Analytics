@@ -3,7 +3,7 @@ import config
 
 
 # get folder path to csv files
-src_path = config.get_src_path()
+inp_path = config.get_input_path()
 
 
 # csv file names
@@ -11,7 +11,7 @@ names = ['departments.csv', 'products.csv']
 
 
 # list of csv file name with full path
-csv_files = ['{0}/{1}'.format(src_path, f) for f in names]
+csv_files = ['{0}/{1}'.format(inp_path, f) for f in names]
 
 
 # read from csv file and return list
