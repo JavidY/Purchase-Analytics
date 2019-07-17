@@ -2,16 +2,13 @@ import csv
 import config
 
 
-# get folder path to csv files
-inp_path = config.get_input_path()
+names = ('departments.csv', 'products.csv')
 
 
-# csv file names
-names = ['departments.csv', 'products.csv']
-
-
-# list of csv file name with full path
-csv_files = ['{0}/{1}'.format(inp_path, f) for f in names]
+# returns full path from the given list of files.
+def get_input_filenames(*names):
+    folder = config.get_input_folder()
+    return ['{0}\\{1}'.format(folder, f) for f in names]
 
 
 # read from csv file and return list
@@ -22,4 +19,4 @@ def read_csv(filename):
 
 
 if __name__ == '__main__':
-    print(read_csv(csv_files[0]))
+    print(read_csv(get_input_filenames(*names)[0]))

@@ -1,3 +1,4 @@
 1.Unit Test 
 2.CI tool updated
-3.Readme installation instructions updated if necessary 
+3.flake8 succeeds
+4.Readme installation instructions updated if necessary 

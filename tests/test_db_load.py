@@ -1,15 +1,12 @@
-# db_load.py
-import sys
+from context import db_load
 import unittest
-sys.path.insert(0, '../src/')
-import db_load  # noqa: E402
 
 
 class TestDbLoad(unittest.TestCase):
 
     def test_read_csv(self):
         self.assertEqual(db_load.read_csv(
-            "..\\input\\test_data\\departments_test.csv"),
+            db_load.get_input_filenames('departments_test.csv')[0]),
             [('1', 'frozen'), ('3', 'bakery')])
 
 
