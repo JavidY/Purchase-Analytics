@@ -52,5 +52,5 @@ jobs:
           name: run tests 
           command: |
             . venv/bin/activate
-            python -m unittest -s tests
+            python -m unittest discover -s tests
             
