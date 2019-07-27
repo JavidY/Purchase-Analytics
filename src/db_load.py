@@ -1,11 +1,11 @@
 import csv
-import config
+from . import config
 
 
 names = ('departments.csv', 'products.csv')
 
 
-# returns full path from the given list of files.
+# returns full path for the given list of files.
 def get_input_filenames(*names):
     folder = config.get_input_folder()
     return ['{0}\\{1}'.format(folder, f) for f in names]
