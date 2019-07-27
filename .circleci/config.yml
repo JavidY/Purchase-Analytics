@@ -47,3 +47,10 @@ jobs:
           command: |
             . venv/bin/activate
             python src/db_init.py
+      # Step 6: run tests   
+      - run: 
+          name: run tests 
+          command: |
+            . venv/bin/activate
+            python -m unittest -s tests
+            
