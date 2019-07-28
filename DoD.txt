@@ -1,3 +1,4 @@
+Definition of Done
 1.Unit Test 
 2.CI tool updated
 3.flake8 succeeds
