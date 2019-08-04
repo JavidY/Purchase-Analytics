@@ -1,7 +1,12 @@
 from sqlalchemy import create_engine, Table, MetaData, Column, String, Integer
+import config
 
 
-engine = create_engine('mysql+pymysql://pa_oltp:mypassword@127.0.0.1/pa_oltp')
+# build connection string for OLTP db
+conn_str = 'mysql+pymysql://{0}:{1}@127.0.0.1/{2}'.format(config.DB_USER_OLTP,
+                                                          config.DB_PASS_OLTP,
+                                                          config.DB_NAME_OLTP)
+engine = create_engine(conn_str)
 metadata = MetaData()
 
 
@@ -11,5 +16,6 @@ department = Table('departments', metadata,
                    Column('department', String(50)))
 
 
-# Create database tables
-metadata.create_all(engine)
+if __name__ == '__main__':
+    # Create database tables
+    metadata.create_all(engine)
