@@ -4,6 +4,10 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7
+        environment:
+            DB_NAME_OLPT: pa_oltp
+            DB_USER_OLTP: pa_oltp
+            DB_PASS_OLTP: mypassword
       - image: circleci/mysql:latest
         environment:
             MYSQL_ROOT_PASSWORD: mypassword
