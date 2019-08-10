@@ -52,13 +52,7 @@ jobs:
           command: 
             echo ${DB_USER_OLTP}
             echo ${DB_PASS_OLTP}
-            echo ${DB_NAME_OLTP}
-      # Initialize db   
-      - run: 
-          name: initialize db 
-          command: |
-            . venv/bin/activate
-            python src/db_init.py
+            echo ${DB_NAME_OLTP}                        
       # Run tests   
       - run: 
           name: run tests 
