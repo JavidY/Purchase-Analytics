@@ -6,10 +6,7 @@ jobs:
       - image: circleci/python:3.7        
       - image: circleci/mysql:latest
         environment:
-            MYSQL_ROOT_PASSWORD: mypassword
-            MYSQL_DATABASE: pa_oltp
-            MYSQL_USER: pa_oltp
-            MYSQL_PASSWORD: mypassword
+            MYSQL_ROOT_PASSWORD: mypassword           
             
 
     working_directory: ~/repo
@@ -20,9 +17,9 @@ jobs:
       - run: 
           name: "Setup custom environment variables"
           command: |
-            echo 'export DB_NAME_OLTP="pa_oltp"' >> $BASH_ENV # Redirect into $BASH_ENV
-            echo 'export DB_USER_OLTP="pa_oltp"' >> $BASH_ENV # Redirect into $BASH_ENV
-            echo 'export DB_PASS_OLTP="mypassword"' >> $BASH_ENV # Redirect into $BASH_ENV
+            echo 'export DB_NAME_OLTP="oltp"' >> $BASH_ENV # Redirect into $BASH_ENV
+            echo 'export DB_USER_OLTP="oltp"' >> $BASH_ENV # Redirect into $BASH_ENV
+            echo 'export DB_PASS_OLTP="oltp"' >> $BASH_ENV # Redirect into $BASH_ENV
       - run:
       # Our primary container isn't MYSQL so run a sleep command until it's ready.
           name: Waiting for MySQL to be ready

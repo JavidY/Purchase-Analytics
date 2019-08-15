@@ -1,9 +1,23 @@
 version: '3'
 
 services:
+
+  pa_db:
+    image: mysql:latest
+    restart: always    
+    container_name: pa_db
+    environment:      
+      MYSQL_ROOT_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
   pa_app:
     build: .
     container_name: pa_app
     volumes:
       - .:/code
     tty: true
+    depends_on:
+      - pa_db
