@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  pa_app:
+    build: .
+    container_name: pa_app
+    volumes:
+      - .:/code
+    tty: true
