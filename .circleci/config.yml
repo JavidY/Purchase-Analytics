@@ -6,7 +6,9 @@ jobs:
       - image: circleci/python:3.7        
       - image: circleci/mysql:latest
         environment:
-            MYSQL_ROOT_PASSWORD: mypassword           
+            MYSQL_ROOT_PASSWORD: mypassword
+        volumes:
+           - ./src/sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
             
 
     working_directory: ~/repo
