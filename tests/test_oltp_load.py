@@ -1,12 +1,12 @@
-from src import db_load
+from src import oltp_load
 import unittest
 
 
 class TestDbLoad(unittest.TestCase):
 
     def test_read_csv(self):
-        self.assertEqual(db_load.read_csv(
-            db_load.get_input_filenames('departments.csv')[0]),
+        self.assertEqual(oltp_load.read_csv(
+            oltp_load.get_input_filenames('departments.csv')[0]),
             [('1', 'frozen'), ('3', 'bakery')])
 
 
