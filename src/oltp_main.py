@@ -1,12 +1,10 @@
-import db_class
-from db_credentials import oltp_db_config
+from oltp_jobs import jobs
 
 
-def main():
-    # call EXECUTER from oltp_load.py
-    db = db_class.DbOps(**oltp_db_config)
-    db.connection.commit() 
+def run():
+    for j in jobs:
+        j.etl()
 
 
 if __name__ == "__main__":
-    main()
+    run()

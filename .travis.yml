@@ -10,4 +10,4 @@ before_script: pip install docker-compose
 script:
   - sudo service mysql stop
   - docker-compose run pa_app sh -c "flake8"
-  - docker-compose run pa_app sh -c "./wait-for-it.sh pa_db:3306 -t 180 --strict -- python -m unittest discover -s tests"   
+  - docker-compose run pa_app sh -c "./wait-for-it.sh pa_db:3306 -t 180 --strict -- python -m unittest discover -s tests"
