@@ -7,7 +7,7 @@ from db_class import DbClass
 
 tgt_conn = DbClass(**oltp_db_config)
 csv_conn = config.get_input_folder()
-src_parameters = ("departments.csv", csv_conn, "csv")
-tgt_parameters = (depts_query_sql, tgt_conn, depts_load_sql, "rdbms")
+src_parameters = ("departments.csv", csv_conn, Mappings.types["csv"])
+tgt_parameters = (depts_query_sql, tgt_conn, depts_load_sql, Mappings.types["rdbms"])
 m_depts = Mappings(*src_parameters, *tgt_parameters)
 jobs = [m_depts]

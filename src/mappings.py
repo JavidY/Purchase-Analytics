@@ -2,6 +2,8 @@ import csv
 
 
 class Mappings:
+    types = {"csv": "csv", "rdbms": "rdbms"}
+
     def __init__(self, src_query_stmt, src_conn, src_type, tgt_query_stmt, tgt_conn, tgt_load_stmt, tgt_type):
         self._src_query_stmt = src_query_stmt
         self._src_conn = src_conn
@@ -61,7 +63,7 @@ class Mappings:
     def load(self, query, conn, values):
         for value in values:
             conn.cursor.execute(query, value)
-            conn.connection.commit()
+        conn.connection.commit()
 
     def capture_delta(self, val_1, val_2):
         return set(val_1) - set(val_2)
