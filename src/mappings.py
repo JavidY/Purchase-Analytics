@@ -24,7 +24,7 @@ class Mappings:
     def src_conn(self):
         return self._src_conn
 
-    # source type: csv, rdbms. Needed to determine how to read data, from file or rdbms 
+    # source type: csv, rdbms. Needed to determine how to read data, from file or rdbms
     @property
     def src_type(self):
         return self._src_type
