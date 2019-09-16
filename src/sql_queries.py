@@ -1,5 +1,6 @@
-depts_load_sql = """INSERT INTO departments
+# Insert statement for OLTP.departments table
+depts_load_sql = """INSERT INTO OLTP.departments
                      (department_id, department) VALUES (%s, %s)"""
 
-
-depts_query_sql = """SELECT department_id, department FROM departments"""
+# Select statement for OLTP.departments table
+depts_query_sql = """SELECT department_id, department FROM OLTP.departments"""

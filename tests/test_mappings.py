@@ -27,7 +27,7 @@ class TestMappings(unittest.TestCase):
         self.oltp_dept_mapping.tgt_conn.cursor.execute("TRUNCATE TABLE departments")
         for data in self.db_test_data:
             self.oltp_dept_mapping.tgt_conn.cursor.execute(self.oltp_dept_mapping.tgt_load_stmt, data)
-        self.oltp_dept_mapping.tgt_conn.connection.commit()
+        self.oltp_dept_mapping.tgt_conn.commit()
 
     def tearDown(self):
         self.oltp_dept_mapping.tgt_conn.cursor.execute("TRUNCATE TABLE departments")
@@ -70,7 +70,7 @@ class TestMappings(unittest.TestCase):
             self.assertEqual(self.oltp_dept_mapping.tgt_conn.cursor.fetchall(), self.db_test_data)
         # testing delta load.Create delta by deleting record from target
         self.oltp_dept_mapping.tgt_conn.cursor.execute("DELETE FROM departments WHERE department_id='1'")
-        self.oltp_dept_mapping.tgt_conn.connection.commit()
+        self.oltp_dept_mapping.tgt_conn.commit()
         self.oltp_dept_mapping.etl()
         self.oltp_dept_mapping.tgt_conn.cursor.execute(self.oltp_dept_mapping.tgt_query_stmt)
         self.assertEqual(self.oltp_dept_mapping.tgt_conn.cursor.fetchall(), self.db_test_data)

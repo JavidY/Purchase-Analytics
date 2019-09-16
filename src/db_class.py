@@ -3,6 +3,7 @@ from mysql.connector import Error
 
 
 class DbClass:
+    """Class for MySql db instances"""
     def __init__(self, **db_config):
         try:
             self._conn = mysql.connector.connect(**db_config)
