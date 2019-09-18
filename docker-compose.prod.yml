@@ -4,11 +4,33 @@ services:
 
   pa_app:    
     tty: true
+    volumes:
+      - /home/ec2-user/csv_files:/code/input
     depends_on:
       - pa_db
 
-  pa_db:    
+
+  pa_db:
+    secrets:      
+      - mysql_root
+      - mysql_oltp_password
+      - mysql_oltp_user
     environment:      
-      MYSQL_ROOT_PASSWORD: mypassword    
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root
+      MYSQL_PASSWORD_FILE: /run/secrets/mysql_oltp_password
+      MYSQL_USER_FILE: /run/secrets/mysql_oltp_user
+      MYSQL_DATABASE: OLTP
     volumes:
-      - ./src/sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - oltp-data:/var/lib/mysql
+      - /home/ec2-user/sql/rel_1.sql:/docker-entrypoint-initdb.d/rel_1.sql:ro
+
+volumes:
+  oltp-data:
+
+secrets:
+  mysql_root:
+    file: /home/ec2-user/secrets/mysql_root.txt
+  mysql_oltp_password:
+    file: /home/ec2-user/secrets/mysql_oltp_password.txt
+  mysql_oltp_user:
+    file: /home/ec2-user/secrets/mysql_oltp_user.txt
